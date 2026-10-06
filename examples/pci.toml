@@ -1,0 +1,20 @@
+# A deployment that serves the PCI Express Base Specification (a PCI-SIG
+# member's copy) to agents that review or write Linux PCI code.
+name = "pci"
+description = """\
+The PCI Express Base Specification (PCI-SIG member copy), for looking up exact \
+requirements: register layouts and bit attributes, capability structures, link \
+training, power management, error handling, ordering rules, timing values."""
+guidance = """\
+Questions usually come from engineers or review agents working on Linux kernel \
+PCI code, so they care about exact register layouts, bit definitions, field \
+attributes (RO, RW, RW1C, RsvdP, …), timing values, ordering rules and the \
+precise normative wording (must / must not / may / is permitted). Distinguish \
+what the spec requires from what it merely permits or recommends, quote the \
+normative sentence or table row for the key requirement, and say which revision \
+you are quoting."""
+usage_note = "The spec is confidential to PCI-SIG members: quote only what the task needs."
+
+[agent]
+model = "claude-opus-5-5"
+effort = "medium"

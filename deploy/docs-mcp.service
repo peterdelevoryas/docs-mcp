@@ -1,0 +1,39 @@
+[Unit]
+Description=docs-mcp: an MCP server for reference documentation
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=docs-mcp
+Group=docs-mcp
+Environment=DOCS_DB=/var/lib/docs-mcp/docs.db
+Environment=DOCS_TOKENS=/etc/docs-mcp/tokens
+Environment=DOCS_CONFIG=/etc/docs-mcp/config.toml
+Environment=DOCS_ADDR=127.0.0.1:8770
+Environment=DOCS_ALLOWED_HOSTS=@DOMAIN@
+# ANTHROPIC_API_KEY=… enables ask_docs and summarize; installed by
+# deploy/api-key.sh.
+EnvironmentFile=-/etc/docs-mcp/anthropic.env
+ExecStart=/usr/local/bin/docs-mcp serve
+# Re-reads the tokens file without a restart.
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+StateDirectory=docs-mcp
+StateDirectoryMode=0700
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

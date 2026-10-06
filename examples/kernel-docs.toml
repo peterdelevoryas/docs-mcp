@@ -1,0 +1,13 @@
+# A deployment that serves a kernel tree's Documentation/ (reStructuredText)
+# and selected HTML pages, e.g. to answer "how is this API meant to be used".
+name = "kernel-docs"
+description = """\
+The Linux kernel's own documentation (Documentation/ from a recent release): \
+driver APIs, subsystem guides, locking rules, coding style and process."""
+guidance = """\
+Prefer the text of the documentation over general knowledge, and point out when \
+a document says it is out of date or describes behavior that depends on a \
+config option."""
+
+[agent]
+effort = "low"
