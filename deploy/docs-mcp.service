@@ -9,7 +9,7 @@ Group=docs-mcp
 Environment=DOCS_DB=/var/lib/docs-mcp/docs.db
 Environment=DOCS_TOKENS=/etc/docs-mcp/tokens
 Environment=DOCS_CONFIG=/etc/docs-mcp/config.toml
-Environment=DOCS_ADDR=127.0.0.1:8770
+Environment=DOCS_ADDR=@PRIVATE_IP@:8770
 Environment=DOCS_ALLOWED_HOSTS=@DOMAIN@
 # ANTHROPIC_API_KEY=… enables ask_docs and summarize; installed by
 # deploy/api-key.sh.
