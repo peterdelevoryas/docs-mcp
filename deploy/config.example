@@ -1,11 +1,14 @@
 # Copy to deploy/config (untracked) and fill in. The deploy scripts read it.
 #
-# The server's public hostname; deploy.sh fills it into the Caddyfile and
-# the systemd unit.
+# The public hostname, served by the edge; deploy.sh fills it into the
+# systemd unit as the allowed Host header.
 DOCS_DOMAIN=docs.example.com
+# The server's address on the private network: the service listens there and
+# the deploy scripts ssh to it (through the edge).
+DOCS_PRIVATE_IP=10.0.0.13
 # The deployment's config (see examples/), installed as
 # /etc/docs-mcp/config.toml. Its `name` also names the keychain items the
 # scripts create ("<name>-mcp-token", "<name>-anthropic-api-key").
 DOCS_INSTANCE=examples/kernel-docs.toml
-# Optional: ssh target, if DNS doesn't point at the server yet.
-# DOCS_HOST=root@203.0.113.7
+# Optional: a different ssh target.
+# DOCS_HOST=root@10.0.0.13

@@ -68,9 +68,10 @@ prompt.
 ## Deploy
 
 The scripts build and run it on a VM (Ubuntu 24.04, built from
-`deploy/cloud-init.yaml`), with Caddy in front. Copy `deploy/config.example`
-to `deploy/config` and set `DOCS_DOMAIN` and `DOCS_INSTANCE`, the path to
-the deployment's config.
+`deploy/cloud-init.yaml`) on a private network, behind an edge server whose
+Caddy terminates HTTPS and proxies to it. Copy `deploy/config.example` to
+`deploy/config` and set `DOCS_DOMAIN`, `DOCS_PRIVATE_IP` and `DOCS_INSTANCE`,
+the path to the deployment's config.
 
 ```sh
 deploy/deploy.sh                          # build on the VM and (re)start
